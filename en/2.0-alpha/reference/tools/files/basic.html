@@ -1,0 +1,696 @@
+
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>conan.tools.files basic operations &mdash; conan 2.0.0-alpha documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../../_static/conan-favicon.png"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+
+  
+    <link rel="stylesheet" href="../../../_static/css/signup.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/css/select2.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../../../_static/css/search.css" type="text/css" />
+        <link rel="index" title="Index"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../search.html"/>
+    <link rel="top" title="conan 2.0.0-alpha documentation" href="../../../index.html"/>
+        <link rel="up" title="conan.tools.files" href="../files.html"/>
+        <link rel="next" title="conan.tools.files downloads" href="downloads.html"/>
+        <link rel="prev" title="conan.tools.files" href="../files.html"/>
+
+ <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-WK44ZFM');</script>
+<!-- End Google Tag Manager -->
+ 
+
+
+
+</script>
+
+
+  
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="https://conan.io">
+          
+
+          
+            
+            <img src="../../../_static/conan-logo-2.0.png" class="logo" />
+          
+          </a>
+
+            
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation.html">Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../integrations.html">Integrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../examples.html">Examples</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../reference.html">Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../commands.html">Conan commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../python_api.html">Python API</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../tools.html">tools</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../cmake.html">conan.tools.cmake</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../env.html">conan.tools.env</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../build.html">conan.tools.build</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../files.html">conan.tools.files</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">conan.tools.files basic operations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="downloads.html">conan.tools.files downloads</a></li>
+<li class="toctree-l4"><a class="reference internal" href="patches.html">conan.tools.files patches</a></li>
+<li class="toctree-l4"><a class="reference internal" href="checksum.html">conan.tools.files checksums</a></li>
+<li class="toctree-l4"><a class="reference internal" href="symlinks.html">conan.tools.files.symlinks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="autopackager.html">conan.tools.files.AutoPackager</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../faq.html">FAQ</a></li>
+</ul>
+
+            
+          
+          <div class="dark_newsletter-div">
+             <p>Sign up for release updates:</p>
+              <script src="https://app-lon04.marketo.com/js/forms2/js/forms2.min.js"></script>
+              <form id="mktoForm_1479"></form>
+              <script>MktoForms2.loadForm("https://app-lon04.marketo.com", "256-FNZ-187", 1479);</script>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">conan</a>
+        
+      </nav>
+
+
+      
+      <script>
+        var reldir = "../../../index.html".replace("index.html","").replace("#", "");
+      </script>
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation" id="breadcrumbs">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../../reference.html">Reference</a> &raquo;</li>
+        
+          <li><a href="../../tools.html">tools</a> &raquo;</li>
+        
+          <li><a href="../files.html">conan.tools.files</a> &raquo;</li>
+        
+      <li>conan.tools.files basic operations</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/conan-io/docs/blob/master/reference/tools/files/basic.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+</div>
+          <!--<select id="search" name="state" multiple="true" onchange="window.location = reldir + this.value;" style="width:90%"></select>
+          <hr/>-->
+          <!--<div class="admonition important">
+            <p class="admonition-title">Announcement</p>
+            <p>JFrog Bintray is being sunset. <a
+            href=https://blog.conan.io/2021/03/31/Bintray-sunset-timeline.html> Please refer this blog post for more detail.</a>
+          </div>-->
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="conan-tools-files-basic-operations">
+<h1>conan.tools.files basic operations<a class="headerlink" href="#conan-tools-files-basic-operations" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="conan-tools-files-copy">
+<h2>conan.tools.files.copy()<a class="headerlink" href="#conan-tools-files-copy" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="conan.tools.files.copy_pattern.copy">
+<code class="descname">copy</code><span class="sig-paren">(</span><em>conanfile</em>, <em>pattern</em>, <em>src</em>, <em>dst</em>, <em>keep_path=True</em>, <em>excludes=None</em>, <em>ignore_case=True</em>, <em>copy_symlink_folders=True</em><span class="sig-paren">)</span><a class="headerlink" href="#conan.tools.files.copy_pattern.copy" title="Permalink to this definition">¶</a></dt>
+<dd><p>It will copy the files matching the pattern from the src folder to the dst, including the
+symlinks to files. If a folder from “src” doesn’t contain any file to be copied, it won’t be
+created empty at the “dst”.
+If in “src” there are symlinks to folders, they will be created at “dst” irrespective if
+they (or the folder where points) have files to be copied or not, unless
+“copy_symlink_folders=False” is specified.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>pattern</strong> – an fnmatch file pattern of the files that should be copied. Eg. .dll</li>
+<li><strong>dst</strong> – the destination local folder, wrt to current conanfile dir, to which
+the files will be copied. Eg: “bin”</li>
+<li><strong>src</strong> – the source folder in which those files will be searched. This folder
+will be stripped from the dst name. Eg.: lib/Debug/x86</li>
+<li><strong>keep_path</strong> – False if you want the relative paths to be maintained from src
+to dst folders, or just drop. False is useful if you want to collect e.g. many
+.libs among many dirs into a single lib dir</li>
+<li><strong>excludes</strong> – Single pattern or a tuple of patterns to be excluded from the
+copy</li>
+<li><strong>ignore_case</strong> – will do a case-insensitive pattern matching when True</li>
+<li><strong>copy_symlink_folders</strong> – Copy the symlink folders at the “dst” folder.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">list of copied files</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="conan-tools-files-load">
+<h2>conan.tools.files.load()<a class="headerlink" href="#conan-tools-files-load" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="conan.tools.files.files.load">
+<code class="descname">load</code><span class="sig-paren">(</span><em>conanfile</em>, <em>path</em>, <em>encoding='utf-8'</em><span class="sig-paren">)</span><a class="headerlink" href="#conan.tools.files.files.load" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loads a file content</p>
+</dd></dl>
+
+</div>
+<div class="section" id="conan-tools-files-save">
+<h2>conan.tools.files.save()<a class="headerlink" href="#conan-tools-files-save" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="conan.tools.files.files.save">
+<code class="descname">save</code><span class="sig-paren">(</span><em>conanfile</em>, <em>path</em>, <em>content</em>, <em>append=False</em>, <em>encoding='utf-8'</em><span class="sig-paren">)</span><a class="headerlink" href="#conan.tools.files.files.save" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="conan-tools-files-rename">
+<h2>conan.tools.files.rename()<a class="headerlink" href="#conan-tools-files-rename" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="conan.tools.files.files.rename">
+<code class="descname">rename</code><span class="sig-paren">(</span><em>conanfile</em>, <em>src</em>, <em>dst</em><span class="sig-paren">)</span><a class="headerlink" href="#conan.tools.files.files.rename" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rename a file or folder to avoid “Access is denied” error on Windows</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>conanfile</strong> – conanfile object</li>
+<li><strong>src</strong> – Source file or folder</li>
+<li><strong>dst</strong> – Destination file or folder</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="conan-tools-files-replace-in-file">
+<h2>conan.tools.files.replace_in_file()<a class="headerlink" href="#conan-tools-files-replace-in-file" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="conan.tools.files.files.replace_in_file">
+<code class="descname">replace_in_file</code><span class="sig-paren">(</span><em>conanfile</em>, <em>file_path</em>, <em>search</em>, <em>replace</em>, <em>strict=True</em>, <em>encoding='utf-8'</em><span class="sig-paren">)</span><a class="headerlink" href="#conan.tools.files.files.replace_in_file" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>conanfile</strong> – Conanfile instance</li>
+<li><strong>file_path</strong> – Path to the file</li>
+<li><strong>search</strong> – Pattern to search</li>
+<li><strong>replace</strong> – string to replace the matches</li>
+<li><strong>strict</strong> – Raise in case “search” is not found in the file contents</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="conan-tools-files-mkdir">
+<h2>conan.tools.files.mkdir()<a class="headerlink" href="#conan-tools-files-mkdir" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="conan.tools.files.files.mkdir">
+<code class="descname">mkdir</code><span class="sig-paren">(</span><em>conanfile</em>, <em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#conan.tools.files.files.mkdir" title="Permalink to this definition">¶</a></dt>
+<dd><p>Recursive mkdir, doesnt fail if already existing</p>
+</dd></dl>
+
+</div>
+<div class="section" id="conan-tools-files-rmdir">
+<h2>conan.tools.files.rmdir()<a class="headerlink" href="#conan-tools-files-rmdir" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="conan.tools.files.files.rmdir">
+<code class="descname">rmdir</code><span class="sig-paren">(</span><em>conanfile</em>, <em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#conan.tools.files.files.rmdir" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="conan-tools-files-chdir">
+<h2>conan.tools.files.chdir()<a class="headerlink" href="#conan-tools-files-chdir" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="conan.tools.files.files.chdir">
+<code class="descname">chdir</code><span class="sig-paren">(</span><em>conanfile</em>, <em>newdir</em><span class="sig-paren">)</span><a class="headerlink" href="#conan.tools.files.files.chdir" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="conan-tools-files-unzip">
+<h2>conan.tools.files.unzip()<a class="headerlink" href="#conan-tools-files-unzip" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="conan.tools.files.files.unzip">
+<code class="descname">unzip</code><span class="sig-paren">(</span><em>conanfile</em>, <em>filename</em>, <em>destination='.'</em>, <em>keep_permissions=False</em>, <em>pattern=None</em>, <em>strip_root=False</em><span class="sig-paren">)</span><a class="headerlink" href="#conan.tools.files.files.unzip" title="Permalink to this definition">¶</a></dt>
+<dd><p>Unzip a zipped file</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>filename</strong> – Path to the zip file</li>
+<li><strong>destination</strong> – Destination folder (or file for .gz files)</li>
+<li><strong>keep_permissions</strong> – Keep the zip permissions. WARNING: Can be dangerous if the
+zip was not created in a NIX system, the bits could produce undefined permission
+schema. Use this option only if you are sure that the zip was created correctly.</li>
+<li><strong>pattern</strong> – Extract only paths matching the pattern. This should be a Unix
+shell-style wildcard, see fnmatch documentation for more details.</li>
+<li><strong>flat</strong> – If all the contents are in a single dir, flat that directory.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="conan-tools-files-update-conandata">
+<h2>conan.tools.files.update_conandata()<a class="headerlink" href="#conan-tools-files-update-conandata" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="conan.tools.files.conandata.update_conandata">
+<code class="descname">update_conandata</code><span class="sig-paren">(</span><em>conanfile</em>, <em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#conan.tools.files.conandata.update_conandata" title="Permalink to this definition">¶</a></dt>
+<dd><p>this only works for updating the conandata on the export() method, it seems it would
+be plain wrong to try to change it anywhere else</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="downloads.html" class="btn btn-neutral float-right" title="conan.tools.files downloads" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../files.html" class="btn btn-neutral" title="conan.tools.files" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016-2021, JFrog.
+      Last updated on Apr 22, 2022.
+      <span><a href="#" class="ot-sdk-show-settings">Cookies Settings</a></span>
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <!--<span class="fa fa-pencil-square-o"> Other versions:</span> -->
+      Version: 2.0-alpha
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          
+            <dd><a href="/en/1.47/index.html">1.47</a></dd>
+          
+        
+          
+            <dd><a href="/en/1.46/index.html">1.46</a></dd>
+          
+        
+          
+            <dd><a href="/en/1.45/index.html">1.45</a></dd>
+          
+        
+          
+            <dd><a href="/en/1.44/index.html">1.44</a></dd>
+          
+        
+          
+            <dd><a href="/en/1.43/index.html">1.43</a></dd>
+          
+        
+          
+            <dd><a href="/en/1.42/index.html">1.42</a></dd>
+          
+        
+          
+            <dd><a href="/en/1.41/index.html">1.41</a></dd>
+          
+        
+          
+            <dd><a href="/en/1.40/index.html">1.40</a></dd>
+          
+        
+          
+            <dd><a href="/en/1.39/index.html">1.39</a></dd>
+          
+        
+          
+            <dd><a href="/en/1.38/index.html">1.38</a></dd>
+          
+        
+          
+            <dd><a href="/en/1.37/index.html">1.37</a></dd>
+          
+        
+          
+            <dd><a href="/en/1.36/index.html">1.36</a></dd>
+          
+        
+          
+            <dd><a href="/en/1.35/index.html">1.35</a></dd>
+          
+        
+          
+            <dd><a href="/en/1.34/index.html">1.34</a></dd>
+          
+        
+          
+            <dd><a href="/en/1.33/index.html">1.33</a></dd>
+          
+        
+          
+            <dd><a href="/en/1.32/index.html">1.32</a></dd>
+          
+        
+          
+            <dd><a href="/en/1.31/index.html">1.31</a></dd>
+          
+        
+          
+            <dd><a href="/en/1.30/index.html">1.30</a></dd>
+          
+        
+          
+            <dd><a href="/en/1.29/index.html">1.29</a></dd>
+          
+        
+          
+            <dd><a href="/en/1.28/index.html">1.28</a></dd>
+          
+        
+          
+            <dd><a href="/en/1.27/index.html">1.27</a></dd>
+          
+        
+          
+            <dd><a href="/en/1.26/index.html">1.26</a></dd>
+          
+        
+          
+            <dd><a href="/en/1.25/index.html">1.25</a></dd>
+          
+        
+          
+            <dd><a href="/en/1.24/index.html">1.24</a></dd>
+          
+        
+          
+            <dd><a href="/en/1.23/index.html">1.23</a></dd>
+          
+        
+          
+            <dd><a href="/en/1.22/index.html">1.22</a></dd>
+          
+        
+          
+            <dd><a href="/en/1.21/index.html">1.21</a></dd>
+          
+        
+          
+            <dd><a href="/en/1.20/index.html">1.20</a></dd>
+          
+        
+          
+            <dd><a href="/en/1.19/index.html">1.19</a></dd>
+          
+        
+          
+            <dd><a href="/en/1.18/index.html">1.18</a></dd>
+          
+        
+          
+            <dd><a href="/en/1.17/index.html">1.17</a></dd>
+          
+        
+          
+            <dd><a href="/en/1.16/index.html">1.16</a></dd>
+          
+        
+          
+            <dd><a href="/en/1.15/index.html">1.15</a></dd>
+          
+        
+          
+            <dd><a href="/en/1.14/index.html">1.14</a></dd>
+          
+        
+          
+            <dd><a href="/en/1.13/index.html">1.13</a></dd>
+          
+        
+          
+            <dd><a href="/en/1.12/index.html">1.12</a></dd>
+          
+        
+          
+            <dd><a href="/en/1.11/index.html">1.11</a></dd>
+          
+        
+          
+            <dd><a href="/en/1.10/index.html">1.10</a></dd>
+          
+        
+          
+            <dd><a href="/en/1.9/index.html">1.9</a></dd>
+          
+        
+          
+            <dd><a href="/en/1.8/index.html">1.8</a></dd>
+          
+        
+          
+            <dd><a href="/en/1.7/index.html">1.7</a></dd>
+          
+        
+          
+            <dd><a href="/en/1.6/index.html">1.6</a></dd>
+          
+        
+          
+            <dd><a href="/en/1.5/index.html">1.5</a></dd>
+          
+        
+          
+            <dd><a href="/en/1.4/index.html">1.4</a></dd>
+          
+        
+          
+            <dd><a href="/en/1.3/index.html">1.3</a></dd>
+          
+        
+          
+            <dd><a href="/en/2.0-alpha/index.html">2.0-alpha</a></dd>
+          
+        
+          
+            <dd><a href="/en/latest/index.html">latest</a></dd>
+          
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="/en/2.0-alpha/conan.pdf">PDF</a></dd>
+        
+      </dl>
+    </div>
+  </div>
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'2.0.0-alpha',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  <!-- <script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+  <script src="../../../_static/js/modernizr.min.js"></script>
+  <script src="../../../_static/js/search.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/js/select2.min.js"></script>
+-->
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+  
+
+
+  <script>
+    // initSearch("2.0-alpha");
+  </script>
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WK44ZFM" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+
+ 
+
+
+</body>
+</html>
